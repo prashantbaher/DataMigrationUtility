@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2EFCEBF3-D8C4-4283-A4FD-4311674E3947}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DMUDataManager.Library</RootNamespace>
+    <AssemblyName>DMUDataManager.Library</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.1.28\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\AssemblyLineData.cs" />
+    <Compile Include="DataAccess\IAssemblyLineData.cs" />
+    <Compile Include="DataAccess\IDataSettings.cs" />
+    <Compile Include="DataAccess\ILineOperationData.cs" />
+    <Compile Include="DataAccess\IOperationItemData.cs" />
+    <Compile Include="DataAccess\IPlantData.cs" />
+    <Compile Include="DataAccess\DataSettings.cs" />
+    <Compile Include="DataAccess\LineOperationData.cs" />
+    <Compile Include="DataAccess\OperationItemData.cs" />
+    <Compile Include="DataAccess\PlantData.cs" />
+    <Compile Include="DataAccess\CompanyData.cs" />
+    <Compile Include="DataAccess\ICompanyData.cs" />
+    <Compile Include="Enums\FileIdentificationType.cs" />
+    <Compile Include="Internal\DataAccess\CreateDatabaseRequest.cs" />
+    <Compile Include="Models\AssemblyLineModel.cs" />
+    <Compile Include="Models\CompanyModel.cs" />
+    <Compile Include="Models\ICompanyModel.cs" />
+    <Compile Include="Models\IPlantModel.cs" />
+    <Compile Include="Models\LineOperationModel.cs" />
+    <Compile Include="Models\OperationItemModel.cs" />
+    <Compile Include="Models\PlantModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Internal\DataAccess\SqlDataAccess.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DatabaseScript\2.dbo.AssemblyLineMaster.Table.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DatabaseScript\3.dbo.LineOperationMaster.Table.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DatabaseScript\4.dbo.OperationItem.Table.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DatabaseScript\1.dbo.PlantMaster.Table.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DatabaseScript\dbo.spAssemblyLineMaster_AddEdit.StoredProcedure.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DatabaseScript\dbo.spAssemblyLineMaster_GetAll.StoredProcedure.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DatabaseScript\dbo.spLineOperationMaster_AddEdit.StoredProcedure.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DatabaseScript\dbo.spLineOperationMaster_GetAll.StoredProcedure.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DatabaseScript\dbo.spOperationItem_Add.StoredProcedure.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DatabaseScript\dbo.spOperationItem_GetByTypeAndItemNo.StoredProcedure.sql" />
+    <Content Include="DatabaseScript\dbo.spOperationItem_UpdateProcessStatus.StoredProcedure.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DatabaseScript\dbo.spPlantMaster_Insert.StoredProcedure.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DatabaseScript\DMUPlantData.Database.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
